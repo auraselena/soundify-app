@@ -1,0 +1,76 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soundify Web</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.cdnfonts.com/css/gotham-6" rel="stylesheet" />
+  </head>
+  <body>
+    <h2 class="task">Coba get data playlist dari Spotify</h2>
+    <div class="header">
+      <h1>Soundify.</h1>
+      <!-- <div class="navigate">
+
+        <ul>
+          <li>Home</li>
+          <li>Explore</li>
+          <li>Library</li>
+          <li>Search</li>
+        </ul>
+      </div> -->
+    </div>
+    <!-- <div class="menu">
+      <ul>
+        <li>YouTube Music</li>
+        <li>Relax</li>
+        <li>Energize</li>
+        <li>Commute</li>
+        <li>Workout</li>
+        <li>Focus</li>
+      </ul>
+    </div> -->
+    <div class="banner">
+      <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2020/12/Spotify_Edit_Playlist_Covers_PR-Header_1920%E2%80%8A%C3%97%E2%80%8A733_A-1-1.gif" alt="" />
+    </div>
+    <h2 class="section">Recently played</h2>
+    <div class="listen again">
+      <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
+        <h3>ROVER</h3>
+        <h5>KAI</h5>
+        <!-- <div class="button"></div> -->
+      </div>
+      <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
+        <h3>ROVER</h3>
+        <h5>KAI</h5>
+      </div>
+      <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
+        <h3>ROVER</h3>
+        <h5>KAI</h5>
+      </div>
+      <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
+        <h3>ROVER</h3>
+        <h5>KAI</h5>
+      </div>
+      <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
+        <h3>ROVER</h3>
+        <h5>KAI</h5>
+      </div>
+    </div>
+    <audio controls autoplay>
+      <source src="C:/Users/perna/Downloads/Music/Lewis Capaldi - Someone You Loved.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </body>
+</html>
+<script>
+  fetch("http://localhost:5005/songs")
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+</script>
