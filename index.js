@@ -2,33 +2,38 @@ const express = require("express");
 const app = express();
 const port = 5005;
 const cors = require("cors");
-const axios = require("axios");
-const api_url = "https://api.spotify.com/v1/playlists/";
-const playlist_id = "3cEYpjA9oz9GiPac4AsH4n";
-const my_cc = "ef5d4cb9702c42fbaa3d3ca1007768cc";
-
-let songs = [
-  {title: "I Want It That Way", artist: "Backstreet Boys", duration: "3:34", pic: "https://open.spotify.com/intl-id/track/62KnDRUq6CBcT7Bqb9IHKV"},{title: "Rover", artist: "KAI", duration: "3:34", pic: "https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e"}
-]
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+const playlistController = require("./controller/playlist-controller");
+const songController = require("./controller/song-controller");
 
 app.use(cors());
 app.use(express.json());
 
-app.get("/songs", (req, res) => {
-  res.send(songs)
-})
+app.get("/", (req, res) => {
+  res.send("🎶 This is Soundify API 🎵");
+});
 
-// add songs to my playlist
-app.post("/add-song", (req, res) => {
-  const {title, artist, url} = req.body;
-  console.log("req.body", req.body);
-  songs.push({title, artist, url});
-  res.send(songs);
-})
+// HOMEWORK:
+// 1. Make playlist as a model (playlist-model.js)
+// 2. Track song play count in the playlist
+app.get("/play-count", playlistController.trackPlayCount);
+
+// 3. sort songs by most played song
+app.get("/sort-by-most-played-song", songController.sortByMostPlayed);
+
+// add a song to my playlist --> success in postman
+app.post("/add-song", playlistController.addSongToPlaylist);
+
+// get list of songs from my playlist -> success in postman
+app.get("/my-playlist");
+
+// create new playlist based on model that has been made --> success in postman
+app.post("/create-playlist", playlistController.createPlaylist);
+
+// get all songs
+app.get("/songs", songController.allSongs);
+
+// play song from my playlist
+app.post("/play-song", songController.playSong);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

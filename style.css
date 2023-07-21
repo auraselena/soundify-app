@@ -29,6 +29,7 @@ body h5 {
 
 .header h1 {
     color: #1db954;
+    margin-top: 50px
 }
 
 .header ul {
@@ -46,12 +47,35 @@ body h5 {
   height: 180px;
 }
 
-.song h3 {
+.song h4 {
   margin-top: 5px;
 }
 
 .song h5 {
   margin-top: 5px;
+}
+
+.play-song{
+  background-color: #1db954;
+  color: black;
+  padding: 10px 10px;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.play-song:hover {
+  cursor: pointer
+}
+
+.add-song {
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.add-song:hover {
+  cursor: pointer
 }
 
 .button {
@@ -96,4 +120,15 @@ body h5 {
 .banner img {
   width: 90%;
   margin: 0px auto;
+}
+
+.play {
+  margin: 0px 0px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #000000;
+  padding: 10px;
+  text-align:center;
 }

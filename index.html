@@ -8,7 +8,7 @@
     <link href="https://fonts.cdnfonts.com/css/gotham-6" rel="stylesheet" />
   </head>
   <body>
-    <h2 class="task">Coba get data playlist dari Spotify</h2>
+    <!-- <h2 class="task">Ini adalah Mini Spotify</h2> -->
     <div class="header">
       <h1>Soundify.</h1>
       <!-- <div class="navigate">
@@ -34,43 +34,62 @@
     <div class="banner">
       <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2020/12/Spotify_Edit_Playlist_Covers_PR-Header_1920%E2%80%8A%C3%97%E2%80%8A733_A-1-1.gif" alt="" />
     </div>
-    <h2 class="section">Recently played</h2>
+    <h2 class="section">Recently Played</h2>
     <div class="listen again">
       <div class="song card">
+        <img src="https://i.scdn.co/image/ab67616d0000b273fbd96e26d1789146a4305912" alt="" />
+        <h4 id="title0"></h4>
+        <h5 id="artist0"></h5>
+        <p class="play-song">Play</p>
+        <p class="add-song">Add to playlist</p>
+      </div>
+      <div class="song card">
         <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
-        <h3>ROVER</h3>
-        <h5>KAI</h5>
+        <h4 id="title1"></h4>
+        <h5 id="artist1"></h5>
+        <p class="play-song">Play</p>
+        <p class="add-song">Add to playlist</p>
         <!-- <div class="button"></div> -->
       </div>
       <div class="song card">
-        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
-        <h3>ROVER</h3>
-        <h5>KAI</h5>
+        <img src="https://i.scdn.co/image/ab67616d0000b2733e4b149dd3110f1432bfeca0" alt="" />
+        <h4 id="title2"></h4>
+        <h5 id="artist2"></h5>
+        <p class="play-song">Play</p>
+        <p class="add-song">Add to playlist</p>
       </div>
       <div class="song card">
-        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
-        <h3>ROVER</h3>
-        <h5>KAI</h5>
+        <img src="https://i.scdn.co/image/ab67616d0000b273df5022bdf1ac4bf52135c4be" alt="" />
+        <h4 id="title3"></h4>
+        <h5 id="artist3"></h5>
+        <p class="play-song">Play</p>
+        <p class="add-song">Add to playlist</p>
       </div>
       <div class="song card">
-        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
-        <h3>ROVER</h3>
-        <h5>KAI</h5>
-      </div>
-      <div class="song card">
-        <img src="https://i.scdn.co/image/ab67616d0000b273ca0bf7a337ed7a8bcc34948e" alt="" />
-        <h3>ROVER</h3>
-        <h5>KAI</h5>
+        <img src="https://i.scdn.co/image/ab67616d0000b2730b04da4f224b51ff86e0a481" alt="" />
+        <h4 id="title4"></h4>
+        <h5 id="artist4"></h5>
+        <p class="play-song">Play</p>
+        <p class="add-song">Add to playlist</p>
       </div>
     </div>
-    <audio controls autoplay>
-      <source src="C:/Users/perna/Downloads/Music/Lewis Capaldi - Someone You Loved.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
+    <div class="play">
+      <audio controls autoplay>
+        <source src="https://music.youtube.com/watch?v=eoQAnGx4Pss&feature=share" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <script>
+      fetch("http://localhost:5005/songs")
+        .then((response) => response.json())
+        .then((json) => {
+          console.log(json);
+          for (let i = 0; i < json.length; i++) {
+            document.getElementById("title" + i).innerHTML = json[i].title;
+            document.getElementById("artist" + i).innerHTML = json[i].artist;
+          }
+        })
+        .catch((error) => console.log(error.message));
+    </script>
   </body>
 </html>
-<script>
-  fetch("http://localhost:5005/songs")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-</script>
