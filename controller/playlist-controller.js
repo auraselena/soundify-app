@@ -18,14 +18,19 @@ const myPlaylist = (req, res) => {
 const createPlaylist = (req, res) => {
   const playlistId = playlists.length + 1;
   const { playlistName } = req.body;
-  const newPlaylist = {
-    playlistId,
-    playlistName,
-    playlistDesc: "",
-    songs: [],
-  };
-  playlists.push(newPlaylist);
-  return res.send(newPlaylist);
+  const checkAvailability = playlists.find((playlist) => playlist.playlistName !== playlistName);
+  if (checkAvailability) {
+    return res.send("You have already made a playlist using that name. Please use another name.");
+  } else {
+    const newPlaylist = {
+      playlistId,
+      playlistName,
+      playlistDesc: "",
+      songs: [],
+    };
+    playlists.push(newPlaylist);
+    return res.send(newPlaylist);
+  }
 };
 
 const trackPlayCount = (req, res) => {

@@ -20,6 +20,7 @@ app.get("/track-play-count", playlistController.trackPlayCount);
 // 3. sort songs by most played song
 app.get("/sort-by-most-played-song", songController.sortByMostPlayed);
 
+// Previous exercises:
 // add a song to my playlist --> success in postman
 app.post("/add-song", playlistController.addSongToPlaylist);
 
