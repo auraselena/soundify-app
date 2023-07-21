@@ -3,8 +3,14 @@ const { playlists } = require("../model/playlist-model");
 const addSongToPlaylist = (req, res) => {
   const { playlistId, title, artist, url } = req.body;
   let findPlaylist = playlists.find((playlists) => playlists.playlistId === playlistId);
-  findPlaylist.songs.push({ title, artist, url });
-  res.send(findPlaylist);
+  const checkAvailability = findPlaylist.songs.find((song) => song.title === title);
+  console.log("ca", checkAvailability);
+  if (checkAvailability) {
+    res.send("Are you sure? This song has already exist in this playlist.");
+  } else {
+    findPlaylist.songs.push({ title, artist, url });
+    res.send(findPlaylist);
+  }
 };
 
 const myPlaylist = (req, res) => {
