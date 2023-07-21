@@ -32,9 +32,7 @@ const trackPlayCount = (req, res) => {
   const { playlistId, songId } = req.body;
   let findPlaylist = playlists.find((playlists) => playlists.playlistId === playlistId);
   const songsFromPlaylist = findPlaylist.songs;
-  console.log("s", songsFromPlaylist);
   const trackedSong = songsFromPlaylist.find((song) => song.id === songId);
-  console.log("ts", trackedSong);
   const result = trackedSong.count;
   if (result !== 0) {
     message = `Play count: ${result}`;
