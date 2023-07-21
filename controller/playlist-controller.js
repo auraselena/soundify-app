@@ -31,14 +31,20 @@ const createPlaylist = (req, res) => {
 const trackPlayCount = (req, res) => {
   const { playlistId, songId } = req.body;
   let findPlaylist = playlists.find((playlists) => playlists.playlistId === playlistId);
-  const trackedSong = findPlaylist.find((playlist) => playlist.song.id === songId);
-  if (trackedSong !== 0) {
-    return res.send(trackedSong.count);
-  } else if (trackedSong === 0) {
-    return res.send("The song hasn't been played anywhere yet. Be the first listener!");
+  const songsFromPlaylist = findPlaylist.songs;
+  console.log("s", songsFromPlaylist);
+  const trackedSong = songsFromPlaylist.find((song) => song.id === songId);
+  console.log("ts", trackedSong);
+  const result = trackedSong.count;
+  if (result !== 0) {
+    message = `Play count: ${result}`;
+  } else if (result === 0) {
+    message = "The song hasn't been played anywhere yet. Be the first listener!";
   } else {
-    return res.status(500).send("Something is wrong");
+    message = "Something is wrong";
   }
+
+  return res.send(message);
 };
 
 module.exports = { addSongToPlaylist, myPlaylist, createPlaylist, trackPlayCount };

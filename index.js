@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 // HOMEWORK:
 // 1. Make playlist as a model (playlist-model.js)
 // 2. Track song play count in the playlist
-app.get("/play-count", playlistController.trackPlayCount);
+app.get("/track-play-count", playlistController.trackPlayCount);
 
 // 3. sort songs by most played song
 app.get("/sort-by-most-played-song", songController.sortByMostPlayed);
